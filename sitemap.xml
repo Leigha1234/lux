@@ -1,12 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-
-  <url>
-    <loc>https://lux-electrical-ltd.co.uk/</loc>
-  </url>
-
-  <url>
-    <loc>https://lux-electrical-ltd.co.uk/privacy-policy.html</loc>
-  </url>
-
+  <url><loc>https://lux-electrical-ltd.co.uk/</loc></url>
+  <url><loc>https://lux-electrical-ltd.co.uk/domestic-electrician.html</loc></url>
+  <url><loc>https://lux-electrical-ltd.co.uk/commercial-electrician.html</loc></url>
+  <url><loc>https://lux-electrical-ltd.co.uk/industrial-electrician.html</loc></url>
+  <url><loc>https://lux-electrical-ltd.co.uk/ev-charger-installation.html</loc></url>
+  <url><loc>https://lux-electrical-ltd.co.uk/privacy-policy.html</loc></url>
 </urlset>
