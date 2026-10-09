@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://lux-electrical-ltd.co.uk/sitemap.xml
