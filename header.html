@@ -9,20 +9,44 @@
     </a>
 
     <nav class="site-links" id="siteNavLinks" aria-label="Main navigation">
-      <a href="index.html">Home</a>
-      <a href="index.html#services">Electrical Services</a>
-      <a href="domestic-electrician.html">Domestic</a>
-      <a href="commercial-electrician.html">Commercial</a>
-      <a href="industrial-electrician.html">Industrial</a>
-      <a href="ev-charger-installation.html">EV Chargers</a>
+      <a href="index.html" data-page="index.html">Home</a>
+
+      <div class="site-dropdown">
+        <button class="site-dropdown-toggle" type="button" aria-expanded="false">
+          Services
+          <span class="dropdown-chevron" aria-hidden="true">⌄</span>
+        </button>
+        <div class="site-dropdown-menu">
+          <a href="index.html#services">All Electrical Services</a>
+          <a href="domestic-electrician.html" data-page="domestic-electrician.html">Domestic Electrical</a>
+          <a href="commercial-electrician.html" data-page="commercial-electrician.html">Commercial Electrical</a>
+          <a href="industrial-electrician.html" data-page="industrial-electrician.html">Industrial Electrical</a>
+          <a href="ev-charger-installation.html" data-page="ev-charger-installation.html">EV Charger Installation</a>
+        </div>
+      </div>
+
       <a href="index.html#areas">Areas We Cover</a>
       <a href="index.html#reviews">Reviews</a>
-      <a href="index.html#faq">FAQ</a>
-      <a href="index.html#contact">Free Quote</a>
+
+      <div class="site-dropdown">
+        <button class="site-dropdown-toggle" type="button" aria-expanded="false">
+          More
+          <span class="dropdown-chevron" aria-hidden="true">⌄</span>
+        </button>
+        <div class="site-dropdown-menu">
+          <a href="index.html#faq">FAQ</a>
+          <a href="privacy-policy.html">Privacy Policy</a>
+          <a href="https://www.facebook.com/share/1b9scBxQHw/?mibextid=wwXIfr" target="_blank" rel="noopener noreferrer">Facebook ↗</a>
+          <a href="https://www.instagram.com/lux_electrical_engineering?igsh=bHdmNm4zYzV0NHM0" target="_blank" rel="noopener noreferrer">Instagram ↗</a>
+        </div>
+      </div>
+
+      <a class="site-quote-link" href="index.html#contact">Free Quote</a>
     </nav>
 
     <a class="site-phone" href="tel:+447787621065" aria-label="Call LUX Electrical Engineering on 07787 621065">
-      <span aria-hidden="true">⌕</span> 07787 621065
+      <span class="phone-mark" aria-hidden="true">☎</span>
+      07787 621065
     </a>
 
     <button class="site-menu-toggle" id="siteMenuToggle" type="button"

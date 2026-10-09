@@ -26,6 +26,36 @@ footer{padding:42px 0}.foot{display:flex;justify-content:space-between;gap:20px;
 
 </style>
 <link rel="stylesheet" href="header.css">
+
+<style>
+.hero{
+  position:relative;
+  isolation:isolate;
+  background:
+    linear-gradient(90deg,rgba(7,15,29,.96) 0%,rgba(7,15,29,.84) 48%,rgba(7,15,29,.50) 100%),
+    url('lounge.jpg') center/cover no-repeat!important;
+  min-height:610px;
+  display:flex;
+  align-items:center;
+}
+.hero:after{
+  content:'';
+  position:absolute;
+  inset:0;
+  z-index:-1;
+  background:linear-gradient(180deg,rgba(11,18,32,.04),rgba(11,18,32,.30));
+}
+.hero .wrap{width:100%}
+@media(max-width:760px){
+  .hero{
+    min-height:570px;
+    background:
+      linear-gradient(90deg,rgba(7,15,29,.94),rgba(7,15,29,.72)),
+      url('lounge.jpg') center/cover no-repeat!important;
+  }
+}
+</style>
+
 </head>
 <body>
 
