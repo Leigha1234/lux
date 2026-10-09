@@ -1,88 +1,91 @@
-(function () {
+(function(){
   const mount = document.getElementById('site-header');
   if (!mount) return;
 
-  fetch('header.html', { cache: 'no-cache' })
-    .then(function (response) {
-      if (!response.ok) throw new Error('Could not load shared header');
-      return response.text();
-    })
-    .then(function (html) {
+  fetch('header.html', {cache:'no-store'})
+    .then(function(r){ if(!r.ok) throw new Error('Header load failed'); return r.text(); })
+    .then(function(html){
       mount.innerHTML = html;
 
-      const menuToggle = document.getElementById('siteMenuToggle');
-      const nav = document.getElementById('siteNavLinks');
-      const dropdowns = Array.from(document.querySelectorAll('.site-dropdown'));
+      const desktopDropdown = document.getElementById('luxServicesDropdown');
+      const desktopButton = desktopDropdown ? desktopDropdown.querySelector('.lux-drop-button') : null;
+      const mobileButton = document.getElementById('luxMenuButton');
+      const mobilePanel = document.getElementById('luxMobilePanel');
+      const mobileServices = document.getElementById('luxMobileServices');
+      const mobileServicesButton = mobileServices ? mobileServices.querySelector('button') : null;
 
-      function closeDropdowns(except) {
-        dropdowns.forEach(function (dropdown) {
-          if (dropdown !== except) {
-            dropdown.classList.remove('is-open');
-            const button = dropdown.querySelector('.site-dropdown-toggle');
-            if (button) button.setAttribute('aria-expanded', 'false');
-          }
+      function closeDesktop(){
+        if(!desktopDropdown || !desktopButton) return;
+        desktopDropdown.classList.remove('lux-open');
+        desktopButton.setAttribute('aria-expanded','false');
+      }
+      function closeMobile(){
+        if(mobilePanel && mobileButton){
+          mobilePanel.classList.remove('lux-open');
+          mobileButton.setAttribute('aria-expanded','false');
+          mobileButton.setAttribute('aria-label','Open navigation menu');
+        }
+        if(mobileServices && mobileServicesButton){
+          mobileServices.classList.remove('lux-open');
+          mobileServicesButton.setAttribute('aria-expanded','false');
+        }
+      }
+
+      if(desktopButton){
+        desktopButton.addEventListener('click', function(e){
+          e.stopPropagation();
+          const open = !desktopDropdown.classList.contains('lux-open');
+          desktopDropdown.classList.toggle('lux-open', open);
+          desktopButton.setAttribute('aria-expanded', String(open));
         });
       }
 
-      dropdowns.forEach(function (dropdown) {
-        const button = dropdown.querySelector('.site-dropdown-toggle');
-        if (!button) return;
-        button.addEventListener('click', function (event) {
-          event.stopPropagation();
-          const opening = !dropdown.classList.contains('is-open');
-          closeDropdowns(dropdown);
-          dropdown.classList.toggle('is-open', opening);
-          button.setAttribute('aria-expanded', String(opening));
-        });
-      });
-
-      function closeMobileMenu() {
-        if (!menuToggle || !nav) return;
-        nav.classList.remove('is-open');
-        menuToggle.setAttribute('aria-expanded', 'false');
-        menuToggle.setAttribute('aria-label', 'Open navigation menu');
-        closeDropdowns();
-      }
-
-      if (menuToggle && nav) {
-        menuToggle.addEventListener('click', function (event) {
-          event.stopPropagation();
-          const open = !nav.classList.contains('is-open');
-          nav.classList.toggle('is-open', open);
-          menuToggle.setAttribute('aria-expanded', String(open));
-          menuToggle.setAttribute('aria-label', open ? 'Close navigation menu' : 'Open navigation menu');
-        });
-
-        nav.querySelectorAll('a').forEach(function (link) {
-          link.addEventListener('click', closeMobileMenu);
+      if(mobileButton){
+        mobileButton.addEventListener('click', function(e){
+          e.stopPropagation();
+          const open = !mobilePanel.classList.contains('lux-open');
+          mobilePanel.classList.toggle('lux-open', open);
+          mobileButton.setAttribute('aria-expanded', String(open));
+          mobileButton.setAttribute('aria-label', open ? 'Close navigation menu' : 'Open navigation menu');
         });
       }
 
-      document.addEventListener('click', function (event) {
-        if (nav && !nav.contains(event.target) && menuToggle && !menuToggle.contains(event.target)) closeMobileMenu();
-        else closeDropdowns();
-      });
+      if(mobileServicesButton){
+        mobileServicesButton.addEventListener('click', function(e){
+          e.stopPropagation();
+          const open = !mobileServices.classList.contains('lux-open');
+          mobileServices.classList.toggle('lux-open', open);
+          mobileServicesButton.setAttribute('aria-expanded', String(open));
+        });
+      }
 
-      document.addEventListener('keydown', function (event) {
-        if (event.key === 'Escape') closeMobileMenu();
+      document.addEventListener('click', function(e){
+        const header = document.getElementById('lux-site-header');
+        if(header && !header.contains(e.target)){ closeDesktop(); closeMobile(); }
       });
-
-      window.addEventListener('resize', function () {
-        if (window.innerWidth > 930) closeMobileMenu();
+      document.addEventListener('keydown', function(e){
+        if(e.key === 'Escape'){ closeDesktop(); closeMobile(); }
+      });
+      window.addEventListener('resize', function(){
+        if(window.innerWidth > 930) closeMobile();
       });
 
       const page = location.pathname.split('/').pop() || 'index.html';
-      document.querySelectorAll('[data-page]').forEach(function (link) {
-        if (link.getAttribute('data-page') === page) {
-          link.classList.add('is-current');
-          link.setAttribute('aria-current', 'page');
-          const parent = link.closest('.site-dropdown');
-          if (parent) parent.classList.add('is-current');
+      mount.querySelectorAll('[data-page]').forEach(function(link){
+        if(link.getAttribute('data-page') === page){
+          link.classList.add('lux-current');
+          link.setAttribute('aria-current','page');
+          const dd = link.closest('.lux-dropdown');
+          if(dd) dd.classList.add('lux-current');
         }
       });
+
+      mount.querySelectorAll('a').forEach(function(a){
+        a.addEventListener('click', closeMobile);
+      });
     })
-    .catch(function (error) {
-      console.error(error);
-      mount.innerHTML = '<div style="padding:16px 20px;background:#0b1423;color:white"><a href="index.html" style="color:white;text-decoration:none">LUX Electrical Engineering</a></div>';
+    .catch(function(err){
+      console.error(err);
+      mount.innerHTML = '<header style="background:#09121f;padding:18px 24px"><a href="index.html" style="color:white;text-decoration:none;font-family:Arial,sans-serif;font-weight:700">LUX Electrical Engineering Ltd</a></header>';
     });
 })();

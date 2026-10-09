@@ -1,23 +1,164 @@
-<header class="site-header">
-  <div class="site-nav">
-    <a class="site-brand" href="index.html" aria-label="LUX Electrical Engineering home">
+<style>
+/* LUX HEADER — intentionally scoped to #lux-site-header */
+#lux-site-header, #lux-site-header *{box-sizing:border-box}
+#lux-site-header{
+  position:sticky;top:0;z-index:99999;
+  width:100%;
+  background:rgba(8,17,30,.98);
+  border-bottom:1px solid rgba(255,255,255,.12);
+  box-shadow:0 8px 30px rgba(0,0,0,.20);
+  font-family:Arial,Helvetica,sans-serif;
+}
+#lux-site-header .lux-nav{
+  width:min(1180px,calc(100% - 40px));
+  min-height:86px;margin:0 auto;
+  display:flex;align-items:center;gap:24px;
+}
+#lux-site-header .lux-brand{
+  display:flex;align-items:center;gap:12px;flex:0 0 auto;
+  color:#fff;text-decoration:none;
+}
+#lux-site-header .lux-brand img{
+  display:block;width:68px;height:68px;object-fit:contain;
+}
+#lux-site-header .lux-brand-copy{display:flex;flex-direction:column;line-height:1.05;white-space:nowrap}
+#lux-site-header .lux-brand-copy strong{font-size:15px;letter-spacing:.08em;color:#f7f4ee}
+#lux-site-header .lux-brand-copy small{margin-top:4px;font:9px "SFMono-Regular",Consolas,monospace;letter-spacing:.18em;color:#6fcf97}
+#lux-site-header .lux-desktop{
+  display:flex;align-items:center;justify-content:flex-end;gap:24px;
+  margin-left:auto;
+}
+#lux-site-header .lux-link,
+#lux-site-header .lux-drop-button{
+  appearance:none;-webkit-appearance:none;
+  display:inline-flex;align-items:center;justify-content:center;gap:6px;
+  min-height:44px;margin:0;padding:0;
+  border:0;background:transparent;border-radius:0;
+  color:#b9c2d1;text-decoration:none;white-space:nowrap;
+  text-transform:uppercase;
+  font:10px "SFMono-Regular",Consolas,monospace;
+  letter-spacing:.055em;cursor:pointer;
+}
+#lux-site-header .lux-link:hover,
+#lux-site-header .lux-link.lux-current,
+#lux-site-header .lux-drop-button:hover,
+#lux-site-header .lux-dropdown.lux-current>.lux-drop-button{color:#fff}
+#lux-site-header .lux-dropdown{position:relative}
+#lux-site-header .lux-chevron{font-size:13px;transition:transform .18s ease}
+#lux-site-header .lux-dropdown.lux-open .lux-chevron{transform:rotate(180deg)}
+#lux-site-header .lux-drop-menu{
+  display:none!important;
+  position:absolute!important;
+  top:calc(100% + 10px)!important;left:50%!important;
+  transform:translateX(-50%)!important;
+  width:245px!important;margin:0!important;padding:8px!important;
+  background:#111b2e!important;border:1px solid rgba(255,255,255,.17)!important;
+  box-shadow:0 20px 45px rgba(0,0,0,.45)!important;
+  z-index:100000!important;
+}
+#lux-site-header .lux-dropdown.lux-open>.lux-drop-menu{display:block!important}
+#lux-site-header .lux-drop-menu a{
+  display:flex!important;align-items:center!important;
+  width:100%!important;min-height:45px!important;
+  margin:0!important;padding:0 12px!important;
+  border:0!important;border-bottom:1px solid rgba(255,255,255,.08)!important;
+  background:transparent!important;border-radius:0!important;
+  color:#b9c2d1!important;text-decoration:none!important;
+  text-transform:uppercase!important;
+  font:10px "SFMono-Regular",Consolas,monospace!important;
+  letter-spacing:.04em!important;
+}
+#lux-site-header .lux-drop-menu a:last-child{border-bottom:0!important}
+#lux-site-header .lux-drop-menu a:hover,
+#lux-site-header .lux-drop-menu a.lux-current{background:rgba(47,128,237,.13)!important;color:#fff!important}
+#lux-site-header .lux-quote{color:#fff}
+#lux-site-header .lux-phone{
+  flex:0 0 auto;display:inline-flex;align-items:center;justify-content:center;gap:7px;
+  min-height:46px;padding:0 13px;
+  border:1px solid rgba(255,255,255,.24);
+  color:#f7f4ee;text-decoration:none;white-space:nowrap;
+  font:11px "SFMono-Regular",Consolas,monospace;
+}
+#lux-site-header .lux-phone:hover{border-color:#2f80ed}
+#lux-site-header .lux-phone-symbol{color:#2f80ed}
+#lux-site-header .lux-menu{
+  display:none;flex:0 0 46px;width:46px;height:46px;
+  margin-left:auto;padding:10px;
+  border:1px solid rgba(255,255,255,.24);
+  background:transparent;cursor:pointer;
+}
+#lux-site-header .lux-menu span{display:block;height:2px;margin:5px 0;background:#fff;transition:.18s}
+#lux-site-header .lux-menu[aria-expanded="true"] span:nth-child(1){transform:translateY(7px) rotate(45deg)}
+#lux-site-header .lux-menu[aria-expanded="true"] span:nth-child(2){opacity:0}
+#lux-site-header .lux-menu[aria-expanded="true"] span:nth-child(3){transform:translateY(-7px) rotate(-45deg)}
+#lux-site-header .lux-mobile-panel{display:none}
+
+@media(min-width:931px){
+  #lux-site-header .lux-dropdown:hover>.lux-drop-menu{display:block!important}
+}
+@media(max-width:1100px){
+  #lux-site-header .lux-brand-copy{display:none}
+  #lux-site-header .lux-desktop{gap:18px}
+}
+@media(max-width:930px){
+  #lux-site-header .lux-nav{width:calc(100% - 32px);min-height:76px;gap:12px}
+  #lux-site-header .lux-brand img{width:58px;height:58px}
+  #lux-site-header .lux-brand-copy{display:flex}
+  #lux-site-header .lux-desktop{display:none!important}
+  #lux-site-header .lux-phone{margin-left:auto}
+  #lux-site-header .lux-menu{display:block}
+  #lux-site-header .lux-mobile-panel{
+    display:none;position:absolute;left:16px;right:16px;top:calc(100% + 1px);
+    padding:9px;background:#111b2e;border:1px solid rgba(255,255,255,.18);
+    box-shadow:0 20px 45px rgba(0,0,0,.45);
+  }
+  #lux-site-header .lux-mobile-panel.lux-open{display:block}
+  #lux-site-header .lux-mobile-panel>a,
+  #lux-site-header .lux-mobile-services>button{
+    appearance:none;-webkit-appearance:none;
+    display:flex;align-items:center;justify-content:space-between;
+    width:100%;min-height:48px;margin:0;padding:0 12px;
+    border:0;border-bottom:1px solid rgba(255,255,255,.09);
+    background:transparent;border-radius:0;
+    color:#c2cad6;text-decoration:none;text-transform:uppercase;
+    font:11px "SFMono-Regular",Consolas,monospace;letter-spacing:.04em;text-align:left;
+  }
+  #lux-site-header .lux-mobile-submenu{display:none;padding:4px 0 5px 14px;border-bottom:1px solid rgba(255,255,255,.09)}
+  #lux-site-header .lux-mobile-services.lux-open .lux-mobile-submenu{display:block}
+  #lux-site-header .lux-mobile-submenu a{
+    display:flex;align-items:center;min-height:43px;padding:0 12px;
+    color:#aeb8c8;text-decoration:none;text-transform:uppercase;
+    font:10px "SFMono-Regular",Consolas,monospace;letter-spacing:.035em;
+  }
+}
+@media(max-width:560px){
+  #lux-site-header .lux-nav{width:calc(100% - 24px)}
+  #lux-site-header .lux-brand img{width:52px;height:52px}
+  #lux-site-header .lux-brand-copy strong{font-size:12px}
+  #lux-site-header .lux-brand-copy small{font-size:8px}
+  #lux-site-header .lux-phone{display:none}
+  #lux-site-header .lux-mobile-panel{left:12px;right:12px}
+}
+</style>
+
+<header id="lux-site-header">
+  <div class="lux-nav">
+    <a class="lux-brand" href="index.html" aria-label="LUX Electrical Engineering home">
       <img src="logo.jpeg" width="68" height="68" alt="LUX Electrical Engineering Ltd logo">
-      <span class="site-brand-copy">
+      <span class="lux-brand-copy">
         <strong>LUX ELECTRICAL</strong>
         <small>ENGINEERING LTD</small>
       </span>
     </a>
 
-    <nav class="site-links" id="siteNavLinks" aria-label="Main navigation">
-      <a href="index.html" data-page="index.html">Home</a>
+    <nav class="lux-desktop" aria-label="Main navigation">
+      <a class="lux-link" data-page="index.html" href="index.html">Home</a>
 
-      <div class="site-dropdown">
-        <button class="site-dropdown-toggle" type="button" aria-expanded="false">
-          Services
-          <span class="dropdown-chevron" aria-hidden="true">⌄</span>
+      <div class="lux-dropdown" id="luxServicesDropdown">
+        <button class="lux-drop-button" type="button" aria-expanded="false">
+          Services <span class="lux-chevron" aria-hidden="true">⌄</span>
         </button>
-        <div class="site-dropdown-menu">
-          <a href="index.html#services">All Electrical Services</a>
+        <div class="lux-drop-menu">
           <a href="domestic-electrician.html" data-page="domestic-electrician.html">Domestic Electrical</a>
           <a href="commercial-electrician.html" data-page="commercial-electrician.html">Commercial Electrical</a>
           <a href="industrial-electrician.html" data-page="industrial-electrician.html">Industrial Electrical</a>
@@ -25,33 +166,39 @@
         </div>
       </div>
 
-      <a href="index.html#areas">Areas We Cover</a>
-      <a href="index.html#reviews">Reviews</a>
-
-      <div class="site-dropdown">
-        <button class="site-dropdown-toggle" type="button" aria-expanded="false">
-          More
-          <span class="dropdown-chevron" aria-hidden="true">⌄</span>
-        </button>
-        <div class="site-dropdown-menu">
-          <a href="index.html#faq">FAQ</a>
-          <a href="privacy-policy.html">Privacy Policy</a>
-          <a href="https://www.facebook.com/share/1b9scBxQHw/?mibextid=wwXIfr" target="_blank" rel="noopener noreferrer">Facebook ↗</a>
-          <a href="https://www.instagram.com/lux_electrical_engineering?igsh=bHdmNm4zYzV0NHM0" target="_blank" rel="noopener noreferrer">Instagram ↗</a>
-        </div>
-      </div>
-
-      <a class="site-quote-link" href="index.html#contact">Free Quote</a>
+      <a class="lux-link" href="index.html#areas">Areas</a>
+      <a class="lux-link" href="index.html#reviews">Reviews</a>
+      <a class="lux-link" href="index.html#faq">FAQ</a>
+      <a class="lux-link lux-quote" href="index.html#contact">Free Quote</a>
     </nav>
 
-    <a class="site-phone" href="tel:+447787621065" aria-label="Call LUX Electrical Engineering on 07787 621065">
-      <span class="phone-mark" aria-hidden="true">☎</span>
-      07787 621065
+    <a class="lux-phone" href="tel:+447787621065">
+      <span class="lux-phone-symbol" aria-hidden="true">☎</span> 07787 621065
     </a>
 
-    <button class="site-menu-toggle" id="siteMenuToggle" type="button"
-      aria-label="Open navigation menu" aria-expanded="false" aria-controls="siteNavLinks">
+    <button class="lux-menu" id="luxMenuButton" type="button"
+      aria-label="Open navigation menu" aria-expanded="false" aria-controls="luxMobilePanel">
       <span></span><span></span><span></span>
     </button>
+
+    <nav class="lux-mobile-panel" id="luxMobilePanel" aria-label="Mobile navigation">
+      <a href="index.html">Home</a>
+      <div class="lux-mobile-services" id="luxMobileServices">
+        <button type="button" aria-expanded="false">
+          Services <span aria-hidden="true">⌄</span>
+        </button>
+        <div class="lux-mobile-submenu">
+          <a href="domestic-electrician.html">Domestic Electrical</a>
+          <a href="commercial-electrician.html">Commercial Electrical</a>
+          <a href="industrial-electrician.html">Industrial Electrical</a>
+          <a href="ev-charger-installation.html">EV Charger Installation</a>
+        </div>
+      </div>
+      <a href="index.html#areas">Areas We Cover</a>
+      <a href="index.html#reviews">Reviews</a>
+      <a href="index.html#faq">FAQ</a>
+      <a href="index.html#contact">Free Quote</a>
+      <a href="privacy-policy.html">Privacy Policy</a>
+    </nav>
   </div>
 </header>
