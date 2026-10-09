@@ -43,61 +43,12 @@ section{position:relative;z-index:1;padding:100px 0;border-bottom:1px solid var(
 footer{padding:56px 0 32px;position:relative;z-index:1}.footer-top{display:flex;justify-content:space-between;flex-wrap:wrap;gap:28px;padding-bottom:36px;border-bottom:1px solid var(--line)}.footer-links{display:flex;gap:25px;list-style:none;margin:0;padding:0;flex-wrap:wrap;align-items:center}.footer-links a{font:12px var(--mono);letter-spacing:.05em;text-transform:uppercase;text-decoration:none;color:var(--slate)}.footer-bottom{display:flex;justify-content:space-between;flex-wrap:wrap;gap:14px;padding-top:26px;font:11px var(--mono);color:var(--dim)}.cookie-banner{position:fixed;bottom:20px;left:20px;right:20px;z-index:100;background:var(--panel);border:1px solid var(--strong);padding:18px 22px;display:flex;justify-content:space-between;align-items:center;gap:20px;font-size:14px;border-radius:4px}.cookie-banner p{margin:0;color:var(--slate)}.cookie-banner button{background:var(--blue);border:1px solid var(--blue);color:white;padding:10px 20px;font:12px var(--mono);text-transform:uppercase;cursor:pointer;border-radius:2px}
 @media(max-width:1050px){.links{gap:13px}.links a{font-size:10px}.hero-panel{right:24px}}@media(max-width:920px){.links{display:flex;position:absolute;top:100%;left:0;right:0;flex-direction:column;align-items:stretch;gap:0;background:rgba(11,18,32,.98);padding:0 28px;max-height:0;opacity:0;overflow:hidden;pointer-events:none;transition:max-height .2s,opacity .2s}.links.nav-open{max-height:420px;opacity:1;padding:6px 28px 18px;pointer-events:auto}.links li{width:100%}.links a{display:flex;align-items:center;min-height:44px;border-top:1px solid var(--line);font-size:12px}.menu-toggle{display:flex}.hero-panel{position:relative;right:auto;bottom:auto;width:100%;max-width:420px;margin:20px 0 0}.contact-grid{grid-template-columns:1fr}.two-col{grid-template-columns:1fr}section{padding:75px 0}}@media(max-width:800px){.service{grid-template-columns:1fr;gap:25px}.service-media{max-width:560px;width:100%}.coverage-inner{grid-template-columns:1fr}.review-card{flex-basis:100%}}@media(max-width:600px){.wrap{padding:0 20px}.nav{padding:12px 18px}.brand-logo{width:50px;height:50px}.brand-text b{font-size:14px}.brand-text span{font-size:9px}.call-text{display:none}.hero{padding:90px 0 60px;min-height:auto}.cta-row{flex-direction:column}.cta-row .btn{width:100%}.map-panel{padding:20px}form.quote{padding:24px}.info-row{flex-wrap:wrap}.info-row .k{width:100%}.footer-top,.footer-bottom{flex-direction:column;align-items:center;text-align:center}.footer-links{justify-content:center}.cookie-banner{flex-direction:column;align-items:stretch}.cookie-banner button{flex:1}.review-card{padding:24px}section{padding:60px 0}}@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}.hero-trace .pulse-circle{animation:none}*{transition:none!important}}
 
-/* ===== LUX SHARED RESPONSIVE NAV ===== */
-header{position:sticky;top:0;z-index:100;background:rgba(11,18,32,.94);backdrop-filter:blur(18px);-webkit-backdrop-filter:blur(18px);border-bottom:1px solid rgba(111,207,151,.18);box-shadow:0 10px 40px rgba(0,0,0,.22)}
-.nav{width:100%;max-width:1180px;min-height:86px;margin:0 auto;padding:8px 28px;display:flex;align-items:center;gap:22px;position:relative}
-.brand{display:flex;align-items:center;gap:12px;text-decoration:none;min-width:0;flex:0 0 auto}
-.brand-logo{width:68px;height:68px;object-fit:contain;flex:none}
-.brand-text{display:flex;flex-direction:column;line-height:1.15;min-width:0}
-.brand-text b{font-family:var(--display);font-size:15px;font-weight:700;letter-spacing:.035em;white-space:nowrap;color:var(--paper)}
-.brand-text span{font-family:var(--mono);font-size:9px;letter-spacing:.12em;color:var(--mint);text-transform:uppercase;white-space:nowrap}
-.links{display:flex;align-items:center;justify-content:center;gap:18px;list-style:none;margin:0 0 0 auto;padding:0}
-.links li{margin:0;padding:0}
-.links a{min-height:44px;display:inline-flex;align-items:center;font-family:var(--mono);font-size:10px;letter-spacing:.045em;text-transform:uppercase;color:var(--slate);text-decoration:none;white-space:nowrap}
-.links a:hover,.links a[aria-current="page"]{color:var(--paper)}
-.nav-right{display:flex;align-items:center;gap:10px;flex:0 0 auto}
-.call-btn{min-height:44px;display:inline-flex;align-items:center;justify-content:center;gap:7px;font-family:var(--mono);font-size:11px;color:var(--paper);text-decoration:none;border:1px solid var(--strong);padding:9px 11px;white-space:nowrap}
-.call-btn:hover{border-color:var(--blue)}
-.menu-toggle{display:none;width:44px;height:44px;flex:0 0 44px;align-items:center;justify-content:center;background:transparent;border:1px solid var(--strong);color:var(--paper);cursor:pointer;padding:0}
-.menu-toggle svg{width:20px;height:20px}
-.icon-close{display:none}
-.menu-toggle[aria-expanded="true"] .icon-open{display:none}
-.menu-toggle[aria-expanded="true"] .icon-close{display:block}
-@media(max-width:1050px){
-  .brand-text{display:none}
-  .links{gap:14px}
-}
-@media(max-width:820px){
-  .nav{min-height:76px;padding:7px 20px}
-  .brand-logo{width:60px;height:60px}
-  .brand-text{display:flex}
-  .brand-text b{font-size:13px}
-  .brand-text span{font-size:8px}
-  .nav-right .call-btn{display:none}
-  .menu-toggle{display:flex}
-  .links{display:none;position:absolute;left:20px;right:20px;top:calc(100% + 1px);margin:0;padding:10px;background:#111B2E;border:1px solid var(--strong);box-shadow:0 20px 45px rgba(0,0,0,.4);flex-direction:column;align-items:stretch;gap:0}
-  .links.nav-open{display:flex}
-  .links li{width:100%}
-  .links a{width:100%;min-height:48px;padding:0 12px;font-size:11px;border-bottom:1px solid var(--line)}
-  .links li:last-child a{border-bottom:0}
-}
-@media(max-width:430px){
-  .nav{padding-left:16px;padding-right:16px}
-  .brand-logo{width:54px;height:54px}
-  .brand-text b{font-size:12px}
-  .brand-text span{font-size:7px;letter-spacing:.08em}
-  .links{left:16px;right:16px}
-}
-
 </style>
+<link rel="stylesheet" href="header.css">
 </head>
 <body>
 <div class="grid-bg" aria-hidden="true"></div>
-<header><div class="nav">
-<a href="#top" class="brand" aria-label="LUX Electrical Engineering home"><img src="logo.jpeg" alt="LUX Electrical Engineering Ltd logo" class="brand-logo" width="80" height="80"><span class="brand-text"><b>LUX ELECTRICAL</b><span>Engineering Ltd</span></span></a>
-<nav aria-label="Main navigation" style="display:contents"><ul class="links" id="navLinks"><li><a href="#top">Home</a></li><li><a href="#services">Electrical Services</a></li><li><a href="domestic-electrician.html">Domestic</a></li><li><a href="commercial-electrician.html">Commercial</a></li><li><a href="industrial-electrician.html">Industrial</a></li><li><a href="ev-charger-installation.html">EV Chargers</a></li><li><a href="#areas">Areas We Cover</a></li><li><a href="#reviews">Reviews</a></li><li><a href="#faq">FAQ</a></li><li><a href="#contact">Free Quote</a></li></ul></nav>
-<div class="nav-right"><a class="call-btn" href="tel:+447787621065" aria-label="Call LUX Electrical Engineering on 07787 621065"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#2F80ED" stroke-width="2" aria-hidden="true"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg><span class="call-text">07787 621065</span></a><button type="button" class="menu-toggle" id="menuToggle" aria-label="Toggle menu" aria-expanded="false" aria-controls="navLinks"><svg class="icon-open" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M3 6h18M3 12h18M3 18h18"/></svg><svg class="icon-close" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M5 5l14 14M19 5L5 19"/></svg></button></div>
-</div></header>
+<div id="site-header"></div>
 <main id="top">
 <section class="hero" aria-labelledby="hero-title"><div class="wrap hero-grid"><div class="hero-content"><div class="eyebrow"><span class="node"></span>Powering with precision</div><h1 id="hero-title">Electricians in<br><em>Macclesfield.</em></h1><p class="desc">LUX Electrical Engineering Ltd provides professional domestic, commercial and industrial electrical services in Macclesfield, Cheshire and across the North West. From lighting and power installations to three-phase systems and EV charger installation, we deliver safe, reliable electrical work with close attention to detail.</p><div class="cta-row"><a href="#contact" class="btn btn-primary">Get a free quote</a><a href="tel:+447787621065" class="btn btn-ghost">Call 07787 621065</a></div><svg class="hero-trace" viewBox="0 0 410 340" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M10,10 L10,60 L120,60 L120,140 L340,140 L340,240 L60,240 L60,330 L400,330" stroke="rgba(237,234,226,.14)" stroke-width="1.5"/><circle cx="10" cy="10" r="4" fill="#2F80ED"/><circle cx="120" cy="140" r="4" fill="#2F80ED"/><circle cx="340" cy="240" r="4" fill="#2F80ED"/><circle cx="400" cy="330" r="4" fill="#2F80ED"/><circle class="pulse-circle" cx="0" cy="0" r="4.5" fill="#39FF88"/></svg></div><aside class="hero-panel" aria-label="Service highlights"><div class="hero-panel-title">LUX Engineering</div><div class="hero-panel-item"><span class="hero-panel-dot"></span>Professional electrical services</div><div class="hero-panel-item"><span class="hero-panel-dot"></span>Domestic · Commercial · Industrial</div><div class="hero-panel-item"><span class="hero-panel-dot"></span>Macclesfield &amp; North West</div></aside></div></section>
 <div class="strip" aria-label="Business information"><div class="wrap"><div class="strip-item"><b>Domestic</b> · Commercial · Industrial</div><div class="strip-item">EV charger installation</div><div class="strip-item">Free, no-obligation quotes</div><div class="strip-item">Macclesfield &amp; Cheshire</div></div></div>
@@ -146,39 +97,8 @@ if(reviewsSlider&&reviewTrack&&reviewPrev&&reviewNext&&reviewDots){const cards=[
 
 </script>
 
-<script>
-(function(){
-  const menuToggle = document.getElementById('menuToggle');
-  const navLinks = document.getElementById('navLinks');
-  if (!menuToggle || !navLinks) return;
 
-  function setMenu(open){
-    navLinks.classList.toggle('nav-open', open);
-    menuToggle.setAttribute('aria-expanded', String(open));
-    menuToggle.setAttribute('aria-label', open ? 'Close navigation menu' : 'Open navigation menu');
-  }
 
-  menuToggle.addEventListener('click', function(){
-    setMenu(!navLinks.classList.contains('nav-open'));
-  });
-
-  navLinks.querySelectorAll('a').forEach(function(link){
-    link.addEventListener('click', function(){ setMenu(false); });
-  });
-
-  document.addEventListener('click', function(event){
-    if (!navLinks.contains(event.target) && !menuToggle.contains(event.target)) setMenu(false);
-  });
-
-  document.addEventListener('keydown', function(event){
-    if (event.key === 'Escape') setMenu(false);
-  });
-
-  window.addEventListener('resize', function(){
-    if (window.innerWidth > 820) setMenu(false);
-  });
-})();
-</script>
-
+<script src="header.js" defer></script>
 </body>
 </html>
